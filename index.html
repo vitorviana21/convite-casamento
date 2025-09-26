@@ -8,126 +8,94 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <style>
-        /* ------------------- CONFIGURAÇÕES GLOBAIS E VARIÁVEIS ------------------- */
-        :root {
-            --verde-musgo: #556B2F; 
-            --creme-claro: #F5F5DC; 
-            --texto-escuro: #3a3a3a; 
-            --dourado-suave: #DAA520; 
-            --branco: #ffffff;
-        }
+    :root {
+        --verde-musgo: #556B2F; 
+        --creme-claro: #F5F5DC; 
+        --texto-escuro: #3a3a3a; 
+        --dourado-suave: #DAA520; 
+        --branco: #ffffff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Montserrat', sans-serif; background-color: var(--creme-claro); color: var(--texto-escuro); line-height: 1.6; text-align: center; }
+    h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 700; color: var(--verde-musgo); }
+    .container { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; }
+    .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    header { position: fixed; width: 100%; top: 0; left: 0; background-color: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); padding: 1rem 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    header nav a { font-family: 'Montserrat', sans-serif; text-decoration: none; color: var(--verde-musgo); margin: 0 15px; font-weight: 600; transition: color 0.3s; }
+    header nav a:hover { color: var(--dourado-suave); }
+    #convite {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('design-de-convite-de-casamento-verde-com-floral-e-aquarela_118960-4629.jpg');
+        background-size: cover; background-position: center; background-attachment: fixed; min-height: 100vh; display: flex; align-items: center; justify-content: center; color: var(--branco); flex-direction: column;
+    }
+    #convite .convite-texto { padding: 2rem; background-color: rgba(0,0,0,0.2); border-radius: 10px; }
+    #convite h1 { font-size: 4rem; color: var(--branco); font-weight: 700; }
+    #convite p { font-size: 1.2rem; margin-top: 1rem; font-weight: 300; }
+    #countdown { display: flex; justify-content: center; margin-top: 2rem; }
+    .countdown-item { margin: 0 15px; }
+    .countdown-item span { display: block; font-size: 2.5rem; font-family: 'Cormorant Garamond', serif; }
+    .countdown-item p { font-size: 0.9rem; margin: 0; text-transform: uppercase; }
+    section { background-color: var(--branco); }
+    section:nth-child(even) { background-color: var(--creme-claro); }
+    section h2 { font-size: 2.5rem; margin-bottom: 2rem; position: relative; display: inline-block; }
+    section h2 .fa-solid { margin-right: 10px; font-size: 2rem; }
+    section h2::after { content: ''; display: block; width: 50px; height: 3px; background-color: var(--dourado-suave); margin: 10px auto 0; }
+    #cerimonia p, #festa p, #mensagem p { font-size: 1.1rem; margin-bottom: 1rem; }
+    .map-container { position: relative; overflow: hidden; padding-top: 56.25%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-top: 2rem; }
+    .map-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+    .timeline { position: relative; max-width: 600px; margin: 0 auto; }
+    .timeline::after { content: ''; position: absolute; width: 4px; background-color: var(--dourado-suave); top: 0; bottom: 0; left: 50%; margin-left: -2px; }
+    .timeline-item { padding: 10px 40px; position: relative; width: 50%; }
+    .timeline-item.left { left: 0; text-align: right; }
+    .timeline-item.right { left: 50%; text-align: left; }
+    .timeline-item::after { content: ''; position: absolute; width: 20px; height: 20px; right: -2px; background-color: var(--branco); border: 4px solid var(--dourado-suave); top: 15px; border-radius: 50%; z-index: 1; }
+    .timeline-item.right::after { left: -2px; }
+    .timeline-content { padding: 20px; background-color: var(--creme-claro); border-radius: 6px; }
+    .timeline-content h3 { margin-bottom: 5px; }
+    #presentes p { max-width: 600px; margin: 0 auto 2rem auto; }
+    .pix-container { margin-top: 2rem; padding: 1.5rem; border: 1px dashed var(--verde-musgo); border-radius: 8px; display: inline-block; }
+    .btn { display: inline-block; background-color: var(--verde-musgo); color: var(--branco); padding: 12px 25px; border-radius: 5px; text-decoration: none; font-weight: 600; transition: background-color 0.3s, transform 0.2s; border: none; cursor: pointer; font-size: 1rem; }
+    .btn:hover { background-color: var(--dourado-suave); transform: scale(1.05); }
+    .mimos-list { list-style: none; padding: 0; margin-top: 1.5rem; max-width: 500px; margin-left: auto; margin-right: auto; text-align: left;}
+    .mimos-list li { margin-bottom: 10px; font-size: 1.1rem; }
+    .mimos-list .fa-solid { color: var(--verde-musgo); margin-right: 10px; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 2rem; }
+    .gallery-grid img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
+    .gallery-grid img:hover { transform: scale(1.05); }
+    .form-group { margin-bottom: 1.5rem; text-align: left; }
+    .form-group label { display: block; margin-bottom: 8px; font-weight: 600; }
+    .form-group input { width: 100%; padding: 12px; border-radius: 5px; border: 1px solid #ccc; font-family: 'Montserrat', sans-serif; font-size: 1rem; transition: border-color 0.3s, box-shadow 0.3s; }
+    .form-group input:focus { border-color: var(--verde-musgo); box-shadow: 0 0 5px rgba(85, 107, 47, 0.5); outline: none; }
+    form { max-width: 500px; margin: 2rem auto 0 auto; }
+    footer { padding: 2rem; background-color: var(--verde-musgo); color: var(--creme-claro); }
+    .info-container { display: flex; justify-content: space-around; gap: 2rem; margin: 3rem 0; text-align: left; }
+    .info-box { background-color: var(--creme-claro); padding: 1.5rem; border-radius: 8px; border-left: 5px solid var(--verde-musgo); width: 50%; }
+    .info-box h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+    .info-box h3 .fa-solid { margin-right: 10px; color: var(--dourado-suave); }
+    .color-palette { display: flex; justify-content: center; gap: 10px; margin-top: 1rem; }
+    .color-dot { width: 35px; height: 35px; border-radius: 50%; border: 2px solid var(--branco); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .message-box { max-width: 650px; margin: 2rem auto 0 auto; padding: 2rem 0; border-top: 2px solid var(--dourado-suave); border-bottom: 2px solid var(--dourado-suave); }
+    .message-box p { font-style: italic; font-size: 1.2rem; line-height: 1.8; }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Montserrat', sans-serif; background-color: var(--creme-claro); color: var(--texto-escuro); line-height: 1.6; text-align: center; }
-        h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 700; color: var(--verde-musgo); }
-        .container { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; }
-        
-        /* ------------------- ANIMAÇÃO DE FADE-IN ------------------- */
-        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-        /* ------------------- CABEÇALHO E NAVEGAÇÃO ------------------- */
-        header { position: fixed; width: 100%; top: 0; left: 0; background-color: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); padding: 1rem 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        header nav a { font-family: 'Montserrat', sans-serif; text-decoration: none; color: var(--verde-musgo); margin: 0 15px; font-weight: 600; transition: color 0.3s; }
-        header nav a:hover { color: var(--dourado-suave); }
-
-        /* ------------------- SEÇÃO: CONVITE (HERO) ------------------- */
-        #convite {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('design-de-convite-de-casamento-verde-com-floral-e-aquarela_118960-4629.jpg'); /* <-- COLE O LINK DA SUA FOTO ONLINE AQUI */
-            background-size: cover; background-position: center; background-attachment: fixed; min-height: 100vh; display: flex; align-items: center; justify-content: center; color: var(--branco); flex-direction: column;
-        }
-        #convite .convite-texto { padding: 2rem; background-color: rgba(0,0,0,0.2); border-radius: 10px; }
-        #convite h1 { font-size: 4rem; color: var(--branco); font-weight: 700; }
-        #convite p { font-size: 1.2rem; margin-top: 1rem; font-weight: 300; }
-        
-        /* NOVO: Estilo do Contador Regressivo */
-        #countdown { display: flex; justify-content: center; margin-top: 2rem; }
-        .countdown-item { margin: 0 15px; }
-        .countdown-item span { display: block; font-size: 2.5rem; font-family: 'Cormorant Garamond', serif; }
-        .countdown-item p { font-size: 0.9rem; margin: 0; text-transform: uppercase; }
-
-        /* ------------------- SEÇÕES GERAIS ------------------- */
-        section { background-color: var(--branco); }
-        section:nth-child(even) { background-color: var(--creme-claro); } /* Ajuste para a nova seção de história */
-        section h2 { font-size: 2.5rem; margin-bottom: 2rem; position: relative; display: inline-block; }
-        section h2 .fa-solid { margin-right: 10px; font-size: 2rem; } /* Estilo para os ícones dos títulos */
-        section h2::after { content: ''; display: block; width: 50px; height: 3px; background-color: var(--dourado-suave); margin: 10px auto 0; }
-
-        /* ------------------- SEÇÃO: CERIMÔNIA ------------------- */
-        #cerimonia p, #festa p { font-size: 1.1rem; margin-bottom: 1rem; }
-        .map-container { position: relative; overflow: hidden; padding-top: 56.25%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-top: 2rem; }
-        .map-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-
-        /* ------------------- NOVA SEÇÃO: NOSSA HISTÓRIA ------------------- */
-        .timeline { position: relative; max-width: 600px; margin: 0 auto; }
-        .timeline::after { content: ''; position: absolute; width: 4px; background-color: var(--dourado-suave); top: 0; bottom: 0; left: 50%; margin-left: -2px; }
-        .timeline-item { padding: 10px 40px; position: relative; width: 50%; }
-        .timeline-item.left { left: 0; text-align: right; }
-        .timeline-item.right { left: 50%; text-align: left; }
-        .timeline-item::after { content: ''; position: absolute; width: 20px; height: 20px; right: -10px; background-color: var(--branco); border: 4px solid var(--dourado-suave); top: 15px; border-radius: 50%; z-index: 1; }
-        .timeline-item.right::after { left: -10px; }
-        .timeline-content { padding: 20px; background-color: var(--creme-claro); border-radius: 6px; }
-        .timeline-content h3 { margin-bottom: 5px; }
-
-        /* ------------------- SEÇÃO: PRESENTES (MIMOS) ------------------- */
-        #presentes p { max-width: 600px; margin: 0 auto 2rem auto; }
-        .pix-container { margin-top: 2rem; padding: 1.5rem; border: 1px dashed var(--verde-musgo); border-radius: 8px; display: inline-block; }
-        .btn { display: inline-block; background-color: var(--verde-musgo); color: var(--branco); padding: 12px 25px; border-radius: 5px; text-decoration: none; font-weight: 600; transition: background-color 0.3s, transform 0.2s; border: none; cursor: pointer; font-size: 1rem; }
-        .btn:hover { background-color: var(--dourado-suave); transform: scale(1.05); }
-
-        /* NOVO: Lista de Mimos estilizada */
-        .mimos-list { list-style: none; padding: 0; margin-top: 1.5rem; max-width: 500px; margin-left: auto; margin-right: auto; text-align: left;}
-        .mimos-list li { margin-bottom: 10px; font-size: 1.1rem; }
-        .mimos-list .fa-solid { color: var(--verde-musgo); margin-right: 10px; }
-
-        /* ------------------- NOVA SEÇÃO: GALERIA DE FOTOS ------------------- */
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 2rem; }
-        .gallery-grid img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
-        .gallery-grid img:hover { transform: scale(1.05); }
-
-        /* ------------------- SEÇÃO: FESTA (RSVP) ------------------- */
-        .form-group { margin-bottom: 1.5rem; text-align: left; }
-        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; }
-        .form-group input { width: 100%; padding: 12px; border-radius: 5px; border: 1px solid #ccc; font-family: 'Montserrat', sans-serif; font-size: 1rem; transition: border-color 0.3s, box-shadow 0.3s; }
-        .form-group input:focus { border-color: var(--verde-musgo); box-shadow: 0 0 5px rgba(85, 107, 47, 0.5); outline: none; }
-        form { max-width: 500px; margin: 2rem auto 0 auto; }
-        
-        /* ------------------- RODAPÉ ------------------- */
-        footer { padding: 2rem; background-color: var(--verde-musgo); color: var(--creme-claro); }
-
-        /* ------------------- MELHORIAS PARA CELULAR (MEDIA QUERIES) ------------------- */
-        @media (max-width: 768px) {
-            /* Ajusta o tamanho das fontes principais em telas menores */
-            #convite h1 { font-size: 3rem; }
-            section h2 { font-size: 2rem; }
-            header nav a { margin: 0 8px; font-size: 0.9rem; } /* Diminui o espaçamento do menu */
-
-            /* Centraliza a Linha do Tempo em uma única coluna */
-            .timeline::after {
-                left: 20px; /* Move a linha central para a esquerda */
-            }
-            .timeline-item {
-                width: 100%; /* Faz cada item ocupar a largura total */
-                padding-left: 50px;
-                padding-right: 10px;
-            }
-            .timeline-item.left, .timeline-item.right {
-                left: 0; /* Reseta o posicionamento */
-                text-align: left; /* Alinha todo o texto à esquerda */
-            }
-            .timeline-item::after {
-                left: 10px; /* Move a bolinha para a nova linha */
-            }
-        }
+    @media (max-width: 768px) {
+        #convite h1 { font-size: 3rem; }
+        section h2 { font-size: 2rem; }
+        header nav a { margin: 0 8px; font-size: 0.9rem; }
+        #convite { background-attachment: scroll; }
+        .timeline::after { left: 20px; }
+        .timeline-item { width: 100%; padding-left: 50px; padding-right: 10px; }
+        .timeline-item.left, .timeline-item.right { left: 0; text-align: left; }
+        .timeline-item::after { left: 10px; }
+        .info-container { flex-direction: column; }
+        .info-box { width: 100%; }
+    }
     </style>
 </head>
 <body>
-
     <header>
         <nav>
             <a href="#convite">Início</a>
@@ -136,13 +104,13 @@
             <a href="#presentes">Presentes</a>
             <a href="#galeria">Fotos</a>
             <a href="#festa">Confirmar Presença</a>
+            <a href="#mensagem">Mensagem</a>
         </nav>
     </header>
-
     <main>
         <section id="convite">
             <div class="convite-texto">
-                <p>13 de Novembro de 2025</p>
+                <p>15 de Novembro de 2025</p>
                 <h1>Ana Luiza<br>&<br>Vitor</h1>
                 <p>Vamos nos casar!</p>
             </div>
@@ -153,78 +121,57 @@
                 <div class="countdown-item"> <span id="seconds">00</span> <p>Segundos</p> </div>
             </div>
         </section>
-
         <section id="historia" class="fade-in">
             <div class="container">
                 <h2><i class="fa-solid fa-heart"></i>Nossa História</h2>
                 <div class="timeline">
-                    <div class="timeline-item left fade-in">
-                        <div class="timeline-content">
-                            <h3>2021 - Onde tudo começou</h3>
-                            <p>Nosso primeiro encontro, um café que mudaria nossas vidas para sempre.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item right fade-in">
-                        <div class="timeline-content">
-                            <h3>2022 - O Pedido de Namoro</h3>
-                            <p>Em uma noite estrelada, nosso compromisso se tornou oficial.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item left fade-in">
-                        <div class="timeline-content">
-                            <h3>2024 - O "Sim" mais esperado</h3>
-                            <p>O pedido de casamento! Um momento de pura emoção e felicidade.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item right fade-in">
-                        <div class="timeline-content">
-                            <h3>2025 - Rumo ao Altar</h3>
-                            <p>E agora, contamos os dias para celebrar nossa união com vocês!</p>
-                        </div>
-                    </div>
+                    <div class="timeline-item left fade-in"> <div class="timeline-content"> <h3>2021 - Onde tudo começou</h3> <p>Nos conhecemos na academia do bairro ainda usando máscaras e mantendo o distanciamento social. No entanto, entre séries e trocas de olhares, uma conexão especial começou a se formar.</p> </div> </div>
+                    <div class="timeline-item right fade-in"> <div class="timeline-content"> <h3>2022 - O Pedido de Namoro</h3> <p>Em uma noite estrelada, nosso compromisso se tornou oficial.</p> </div> </div>
+                    <div class="timeline-item left fade-in"> <div class="timeline-content"> <h3>2024 - O "Sim" mais esperado</h3> <p>O pedido de casamento! Um momento de pura emoção e felicidade.</p> </div> </div>
+                    <div class="timeline-item right fade-in"> <div class="timeline-content"> <h3>2025 - Rumo ao Altar</h3> <p>E agora, contamos os dias para celebrar nossa união com vocês!</p> </div> </div>
                 </div>
             </div>
         </section>
-
         <section id="cerimonia" class="fade-in">
             <div class="container">
-                <h2><i class="fa-solid fa-ring"></i>Cerimônia</h2>
-                <p>Celebraremos nossa união no dia <strong>13 de novembro de 2025, às 10h50.</strong></p>
-                <p>A cerimônia será realizada no <strong>Cartório de Registro Civil do 1° Subdistrito de São José dos Campos.</strong></p>
-                <p><strong>Endereço:</strong> R. Humaitá, 220 - Centro, São José dos Campos - SP, 12245-810</p>
+                <h2><i class="fa-solid fa-ring"></i>Cerimônia e Celebração</h2>
+                <p>Celebraremos nossa união no dia <strong>15 de novembro de 2025, às 12h00.</strong></p>
+                <p>A cerimônia e a recepção acontecerão no mesmo local, uma <strong>chácara em São José dos Campos.</strong></p>
+                <p><strong>Endereço:</strong> Av. Canadá, 239 - Jardim Motorama, São José dos Campos - SP, 12220-270</p>
+                <div class="info-container">
+                    <div class="info-box"> <h3><i class="fa-solid fa-utensils"></i> Nosso Churrasco</h3> <p>Nossa celebração será um churrasco descontraído! Para isso, pedimos a colaboração de cada família com <strong>1kg de carne</strong>. Traga também suas bebidas preferidas em seu <strong>cooler pessoal</strong>.</p> </div>
+                    <div class="info-box"> <h3><i class="fa-solid fa-shirt"></i> Paleta de Cores</h3> <p>Para deixar nossas fotos ainda mais bonitas, sugerimos que os trajes sigam esta paleta de cores. Fique à vontade para escolher seu tom preferido!</p> <p style="font-size: small; color: #808000;">PS.: Nossa casinha também segue essa cartela.</p> <div class="color-palette"> <span class="color-dot" style="background-color: #808000;" title="Verde Oliva"></span> <span class="color-dot" style="background-color: #E2725B;" title="Terracota"></span> <span class="color-dot" style="background-color: #D2B48C;" title="Nude/Bege"></span> <span class="color-dot" style="background-color: #E0BFB8;" title="Rosê"></span> <span class="color-dot" style="background-color: #FFDB58;" title="Mostarda"></span> </div> </div>
+                </div>
                 <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3667.636601402241!2d-45.892053024803926!3d-23.182859079061093!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cc4a55925a58c1%3A0x633d4a229a25b271!2sCart%C3%B3rio%20de%20Registro%20Civil%20do%201%C2%B0%20Subdistrito!5e0!3m2!1spt-BR!2sbr!4v1726930005118!5m2!1spt-BR!2sbr" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d714.6544598670034!2d-45.83026843050408!3d-23.274383966717096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cdb47859a45491%3A0x97b6abf64deddaa2!2sAv.%20Canad%C3%A1%2C%20239%20-%20Parque%20Interlagos%2C%20S%C3%A3o%20Jos%C3%A9%20dos%20Campos%20-%20SP!5e1!3m2!1spt-BR!2sbr!4v1758852434147!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </section>
-
         <section id="presentes" class="fade-in">
             <div class="container">
                 <h2><i class="fa-solid fa-gift"></i>Presentes</h2>
-                <p>Sua presença é nosso maior presente! Mas, se desejar nos mimar, ficaremos muito felizes em receber um mimo para nosso novo lar.</p>
+                <p>Sua presença é nosso maior presente! Mas, se desejar nos mimar, ficaremos muito felizes com o seu <strong>apoio.</strong></p>
+                <p>Fique à vontade para contribuir com um valor para o nosso casamento, um mimo para o nosso lar ou algo que você ache que vai nos fazer <br> <strong>felizes para sempre!</strong></p>
                 <div class="pix-container">
                     <p><strong>Chave PIX (Celular):</strong></p>
                     <p id="pix-key" style="font-weight: bold; font-size: 1.2rem;">12-99610-3342</p>
                     <button class="btn" id="copy-btn">Copiar Chave PIX</button>
                 </div>
-
                 <h3 style="margin-top: 3rem; font-size: 1.8rem;">Sugestões para Nosso Cantinho</h3>
                 <ul class="mimos-list">
                     <li><i class="fa-solid fa-utensils"></i>Itens para deixar nossa cozinha mais gostosa.</li>
-                    <li><i class="fa-solid fa-couch"></i>Decoração para que nossa sala fique a nossa cara.</li>
                     <li><i class="fa-solid fa-mug-saucer"></i>Um cantinho do café bem aconchegante.</li>
                     <li><i class="fa-solid fa-bed"></i>Roupas de cama e banho para nosso conforto.</li>
                 </ul>
             </div>
         </section>
-
         <section id="galeria" class="fade-in">
             <div class="container">
                 <h2><i class="fa-solid fa-camera-retro"></i>Nossos Momentos</h2>
                 <div class="gallery-grid">
-                    <img src="https://picsum.photos/400/400?random=1" alt="Foto do casal 1">
-                    <img src="https://picsum.photos/400/400?random=2" alt="Foto do casal 2">
-                    <img src="https://picsum.photos/400/400?random=3" alt="Foto do casal 3">
+                    <img src="fristTrip.jpg" alt="Foto do casal 1">
+                    <img src="fristKiss.jpg" alt="Foto do casal 2">
+                    <img src="noivado.jpg" alt="Foto do casal 3">
                 </div>
             </div>
         </section>
@@ -232,26 +179,35 @@
         <section id="festa" class="fade-in">
             <div class="container">
                 <h2><i class="fa-solid fa-check-double"></i>Confirmar Presença</h2>
-                <p>Após a cerimônia, vamos celebrar em uma pequena recepção no dia <strong>15 de novembro de 2025.</strong></p>
-                <p>Por favor, confirme sua presença até o dia <strong>01 de Novembro de 2025.</strong></p>
-
-                <form action="[COLE O LINK DO SEU GOOGLE FORM AQUI]" method="POST" target="_blank">
+                <p>Por favor, confirme sua presença até o dia <strong>15 de Outubro de 2025.</strong></p>
+                
+                <form>
                     <div class="form-group">
                         <label for="nome">Seu nome completo:</label>
-                        <input type="text" id="nome" name="entry.123456789" required> 
+                        <input type="text" id="nome" name="entry.1119561917" required> 
                     </div>
                     <button type="submit" class="btn">Confirmar Presença</button>
                 </form>
+
+                <p id="confirma-msg" style="color: var(--verde-musgo); font-weight: bold; margin-top: 1rem; visibility: hidden; transition: visibility 0.5s;">Obrigado por confirmar!</p>
+            </div>
+        </section>
+
+        <section id="mensagem" class="fade-in">
+            <div class="container">
+                <h2><i class="fa-solid fa-pen-fancy"></i>Uma Mensagem Para Vocês</h2>
+                <div class="message-box">
+                    <p>Será uma reunião mais íntima com os familiares e amigos mais próximos. Cada um de vocês teve um papel importante para a nossa história e gostaríamos que estivessem presente nesse novo capítulo que se inicia. Contamos com as suas orações e testemunhos.</p>
+                </div>
             </div>
         </section>
     </main>
-
+    
     <footer>
         <p>Ana Luiza & Vitor ♡ 2025</p>
     </footer>
 
     <script>
-        // --- Animação de Fade-in ao Rolar a Página ---
         const faders = document.querySelectorAll('.fade-in');
         const appearOptions = { threshold: 0.2 };
         const appearOnScroll = new IntersectionObserver(function(entries, observer) {
@@ -262,8 +218,7 @@
             });
         }, appearOptions);
         faders.forEach(fader => appearOnScroll.observe(fader));
-
-        // --- Funcionalidade de Copiar Chave PIX ---
+        
         const copyBtn = document.getElementById('copy-btn');
         const pixKey = document.getElementById('pix-key').innerText;
         copyBtn.addEventListener('click', () => {
@@ -273,28 +228,58 @@
             }).catch(err => { alert('Erro ao copiar a chave.'); });
         });
 
-        // --- NOVO: Contador Regressivo ---
         const countdown = () => {
-            const weddingDate = new Date('November 13, 2025 10:50:00').getTime();
+            const weddingDate = new Date('November 15, 2025 12:00:00').getTime();
             const now = new Date().getTime();
             const gap = weddingDate - now;
-
-            const second = 1000;
-            const minute = second * 60;
-            const hour = minute * 60;
-            const day = hour * 24;
-
-            const textDay = Math.floor(gap / day);
-            const textHour = Math.floor((gap % day) / hour);
-            const textMinute = Math.floor((gap % hour) / minute);
-            const textSecond = Math.floor((gap % minute) / second);
-            
+            const second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24;
+            const textDay = Math.floor(gap / day), textHour = Math.floor((gap % day) / hour), textMinute = Math.floor((gap % hour) / minute), textSecond = Math.floor((gap % minute) / second);
+            if (gap < 0) {
+                document.getElementById('countdown').innerHTML = "<h3 style='color:white; font-family: Cormorant Garamond, serif;'>É hoje o grande dia!</h3>";
+                return;
+            }
             document.getElementById('days').innerText = String(textDay).padStart(2, '0');
             document.getElementById('hours').innerText = String(textHour).padStart(2, '0');
             document.getElementById('minutes').innerText = String(textMinute).padStart(2, '0');
             document.getElementById('seconds').innerText = String(textSecond).padStart(2, '0');
         };
         setInterval(countdown, 1000);
+
+        // --- NOVA LÓGICA DE ENVIO DO FORMULÁRIO ---
+        const rsvpForm = document.querySelector('#festa form');
+        const confirmaMsg = document.getElementById('confirma-msg');
+
+        rsvpForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const submitButton = rsvpForm.querySelector('button');
+            submitButton.innerText = 'Enviando...';
+            submitButton.disabled = true;
+            
+            const formData = new FormData(rsvpForm);
+            const url = 'https://docs.google.com/forms/d/e/1FAIpQLSflHvy5-y-iuIWIl0JdOQPKo0KhgtGuA54Q_nPGTJsaMO6MXA/formResponse';
+
+            fetch(url, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors'
+            })
+            .then(() => {
+                rsvpForm.reset();
+                submitButton.innerText = 'Confirmar Presença';
+                submitButton.disabled = false;
+                confirmaMsg.style.visibility = 'visible';
+                setTimeout(() => {
+                    confirmaMsg.style.visibility = 'hidden';
+                }, 4000);
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                alert('Ocorreu um erro ao confirmar. Tente novamente.');
+                submitButton.innerText = 'Confirmar Presença';
+                submitButton.disabled = false;
+            });
+        });
     </script>
 </body>
 </html>
