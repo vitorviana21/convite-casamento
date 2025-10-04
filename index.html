@@ -93,6 +93,112 @@
         .info-container { flex-direction: column; }
         .info-box { width: 100%; }
     }
+
+    /* Card que envolve o formulário */
+    .form-card {
+        background-color: var(--branco);
+        padding: 2.5rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        margin-top: 2rem;
+        text-align: left; /* Alinha o texto do formulário à esquerda */
+    }
+
+    /* Ajustes gerais nos grupos de campos */
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: #555;
+    }
+
+    /* Estilo dos campos de texto, número e área de texto */
+    .form-group input[type="text"],
+    .form-group input[type="number"],
+    .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1rem;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+        border-color: var(--verde-musgo);
+        box-shadow: 0 0 5px rgba(85, 107, 47, 0.3);
+        outline: none;
+    }
+    .form-group textarea {
+        resize: vertical;
+    }
+
+    /* NOVO VISUAL DOS BOTÕES DE RÁDIO (SIM/NÃO) */
+    .radio-button-group {
+        display: flex;
+        gap: 10px;
+    }
+    .radio-button-group input[type="radio"] {
+        display: none; /* Esconde a bolinha padrão */
+    }
+    .radio-button-group .radio-button {
+        flex-grow: 1;
+        text-align: center;
+        padding: 12px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 600;
+    }
+    /* Estilo do botão quando NÃO selecionado */
+    .radio-button-group input[type="radio"] + .radio-button {
+        background-color: #f9f9f9;
+        color: #777;
+    }
+    /* Estilo do botão quando SELECIONADO */
+    .radio-button-group input[type="radio"]:checked + .radio-button {
+        background-color: var(--verde-musgo);
+        border-color: var(--verde-musgo);
+        color: var(--branco);
+        box-shadow: 0 2px 5px rgba(85, 107, 47, 0.4);
+    }
+
+    /* Campos condicionais de Adultos e Crianças */
+    #conditional-fields {
+        transition: all 0.4s ease-in-out;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        margin: 0;
+        padding: 0;
+        border-top: 1px solid #eee;
+    }
+
+    /* Botão principal de confirmação */
+    form .btn {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.1rem;
+        margin-top: 1rem;
+    }
+
+    /* Estilo da mensagem de sucesso */
+    #success-message {
+        padding: 2rem;
+        border: 2px dashed var(--dourado-suave);
+        border-radius: 10px;
+        text-align: center;
+    }
+    #success-message h3 {
+        font-size: 2rem;
+        color: var(--verde-musgo);
+        margin: 1rem 0;
+    }
     </style>
 </head>
 <body>
@@ -143,7 +249,7 @@
                     <div class="info-box"> <h3><i class="fa-solid fa-shirt"></i> Paleta de Cores</h3> <p>Para deixar nossas fotos ainda mais bonitas, sugerimos que os trajes sigam esta paleta de cores. Fique à vontade para escolher seu tom preferido!</p> <p style="font-size: small; color: #808000;">PS.: Nossa casinha também segue essa cartela.</p> <div class="color-palette"> <span class="color-dot" style="background-color: #808000;" title="Verde Oliva"></span> <span class="color-dot" style="background-color: #E2725B;" title="Terracota"></span> <span class="color-dot" style="background-color: #D2B48C;" title="Nude/Bege"></span> <span class="color-dot" style="background-color: #E0BFB8;" title="Rosê"></span> <span class="color-dot" style="background-color: #FFDB58;" title="Mostarda"></span> </div> </div>
                 </div>
                 <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d714.6544598670034!2d-45.83026843050408!3d-23.274383966717096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cdb47859a45491%3A0x97b6abf64deddaa2!2sAv.%20Canad%C3%A1%2C%20239%20-%20Parque%20Interlagos%2C%20S%C3%A3o%20Jos%C3%A9%20dos%20Campos%20-%20SP!5e1!3m2!1spt-BR!2sbr!4v1758852434147!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3668.601992985338!2d-45.83688888502987!3d-23.18433298489117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cc4b39b7d4a275%3A0x7d2f9d3b0b522a36!2sAv.%20Canad%C3%A1%2C%20239%20-%20Jardim%20Motorama%2C%20S%C3%A3o%20Jos%C3%A9%20dos%20Campos%20-%20SP%2C%2012220-270!5e0!3m2!1spt-BR!2sbr!4v1678886400000!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </section>
@@ -181,15 +287,49 @@
                 <h2><i class="fa-solid fa-check-double"></i>Confirmar Presença</h2>
                 <p>Por favor, confirme sua presença até o dia <strong>15 de Outubro de 2025.</strong></p>
                 
-                <form>
-                    <div class="form-group">
-                        <label for="nome">Seu nome completo:</label>
-                        <input type="text" id="nome" name="entry.1119561917" required> 
-                    </div>
-                    <button type="submit" class="btn">Confirmar Presença</button>
-                </form>
+                <div id="success-message" style="display: none;">
+                    <img src="alianca.png" alt="Enviado" style="max-width: 120px;">
+                    <h3>Tudo certo!</h3>
+                    <p>Sua resposta foi enviada com sucesso.</p>
+                </div>
 
-                <p id="confirma-msg" style="color: var(--verde-musgo); font-weight: bold; margin-top: 1rem; visibility: hidden; transition: visibility 0.5s;">Obrigado por confirmar!</p>
+                <div class="form-card">
+                    <form id="rsvp-form">
+                        <div class="form-group">
+                            <label for="nome">Seu nome completo:</label>
+                            <input type="text" id="nome" name="entry.236437215" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Você irá ao evento?</label>
+                            <div class="radio-button-group">
+                                <input type="radio" id="radio-sim" name="entry.1209342466" value="Sim, estarei presente" required>
+                                <label for="radio-sim" class="radio-button">Sim, estarei presente</label>
+
+                                <input type="radio" id="radio-nao" name="entry.1209342466" value="Não poderei comparecer">
+                                <label for="radio-nao" class="radio-button">Não poderei comparecer</label>
+                            </div>
+                        </div>
+
+                        <div id="conditional-fields">
+                            <div class="form-group">
+                                <label for="adultos">Quantidade de adultos (incluindo você):</label>
+                                <input type="number" id="adultos" name="entry.1316183465" min="1" value="1">
+                            </div>
+                            <div class="form-group">
+                                <label for="criancas">Quantidade de crianças:</label>
+                                <input type="number" id="criancas" name="entry.922480604" min="0" value="0">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="recado">Deixe um recado para os noivos (opcional):</label>
+                            <textarea id="recado" name="entry.1426054380" rows="4"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn">Confirmar Presença</button>
+                    </form>
+                </div>
             </div>
         </section>
 
@@ -245,10 +385,28 @@
         };
         setInterval(countdown, 1000);
 
-        // --- NOVA LÓGICA DE ENVIO DO FORMULÁRIO ---
-        const rsvpForm = document.querySelector('#festa form');
-        const confirmaMsg = document.getElementById('confirma-msg');
+        const rsvpForm = document.getElementById('rsvp-form');
+        const successMessage = document.getElementById('success-message');
+        const conditionalFields = document.getElementById('conditional-fields');
+        // ✅ CORREÇÃO FEITA AQUI 👇
+        const presenceRadios = document.querySelectorAll('input[name="entry.1209342466"]');
 
+        // 1. Lógica para mostrar/esconder campos
+        presenceRadios.forEach(radio => {
+            radio.addEventListener('change', () => {
+                if (radio.value === 'Sim, estarei presente') {
+                    conditionalFields.style.maxHeight = '300px'; // Altura suficiente para os campos
+                    conditionalFields.style.opacity = '1';
+                    conditionalFields.style.marginTop = '1.5rem';
+                } else {
+                    conditionalFields.style.maxHeight = '0';
+                    conditionalFields.style.opacity = '0';
+                    conditionalFields.style.marginTop = '0';
+                }
+            });
+        });
+
+        // 2. Lógica de envio do formulário
         rsvpForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
@@ -262,20 +420,16 @@
             fetch(url, {
                 method: 'POST',
                 body: formData,
-                mode: 'no-cors'
+                mode: 'no-cors' // Essencial para o envio funcionar
             })
             .then(() => {
-                rsvpForm.reset();
-                submitButton.innerText = 'Confirmar Presença';
-                submitButton.disabled = false;
-                confirmaMsg.style.visibility = 'visible';
-                setTimeout(() => {
-                    confirmaMsg.style.visibility = 'hidden';
-                }, 4000);
+                // Esconde o formulário e mostra a mensagem de sucesso
+                rsvpForm.style.display = 'none';
+                successMessage.style.display = 'block';
             })
             .catch(error => {
-                console.error('Error!', error.message);
-                alert('Ocorreu um erro ao confirmar. Tente novamente.');
+                console.error('Erro ao enviar:', error.message);
+                alert('Ocorreu um erro ao confirmar. Tente novamente, por favor.');
                 submitButton.innerText = 'Confirmar Presença';
                 submitButton.disabled = false;
             });
