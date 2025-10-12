@@ -8,198 +8,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <style>
-    :root {
-        --verde-musgo: #556B2F; 
-        --creme-claro: #F5F5DC; 
-        --texto-escuro: #3a3a3a; 
-        --dourado-suave: #DAA520; 
-        --branco: #ffffff;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Montserrat', sans-serif; background-color: var(--creme-claro); color: var(--texto-escuro); line-height: 1.6; text-align: center; }
-    h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 700; color: var(--verde-musgo); }
-    .container { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; }
-    .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-    header { position: fixed; width: 100%; top: 0; left: 0; background-color: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); padding: 1rem 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    header nav a { font-family: 'Montserrat', sans-serif; text-decoration: none; color: var(--verde-musgo); margin: 0 15px; font-weight: 600; transition: color 0.3s; }
-    header nav a:hover { color: var(--dourado-suave); }
-    #convite {
-        background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('design-de-convite-de-casamento-verde-com-floral-e-aquarela_118960-4629.jpg');
-        background-size: cover; background-position: center; background-attachment: fixed; min-height: 100vh; display: flex; align-items: center; justify-content: center; color: var(--branco); flex-direction: column;
-    }
-    #convite .convite-texto { padding: 2rem; background-color: rgba(0,0,0,0.2); border-radius: 10px; }
-    #convite h1 { font-size: 4rem; color: var(--branco); font-weight: 700; }
-    #convite p { font-size: 1.2rem; margin-top: 1rem; font-weight: 300; }
-    #countdown { display: flex; justify-content: center; margin-top: 2rem; }
-    .countdown-item { margin: 0 15px; }
-    .countdown-item span { display: block; font-size: 2.5rem; font-family: 'Cormorant Garamond', serif; }
-    .countdown-item p { font-size: 0.9rem; margin: 0; text-transform: uppercase; }
-    section { background-color: var(--branco); }
-    section:nth-child(even) { background-color: var(--creme-claro); }
-    section h2 { font-size: 2.5rem; margin-bottom: 2rem; position: relative; display: inline-block; }
-    section h2 .fa-solid { margin-right: 10px; font-size: 2rem; }
-    section h2::after { content: ''; display: block; width: 50px; height: 3px; background-color: var(--dourado-suave); margin: 10px auto 0; }
-    #cerimonia p, #festa p, #mensagem p { font-size: 1.1rem; margin-bottom: 1rem; }
-    .map-container { position: relative; overflow: hidden; padding-top: 56.25%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-top: 2rem; }
-    .map-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-    .timeline { position: relative; max-width: 600px; margin: 0 auto; }
-    .timeline::after { content: ''; position: absolute; width: 4px; background-color: var(--dourado-suave); top: 0; bottom: 0; left: 50%; margin-left: -2px; }
-    .timeline-item { padding: 10px 40px; position: relative; width: 50%; }
-    .timeline-item.left { left: 0; text-align: right; }
-    .timeline-item.right { left: 50%; text-align: left; }
-    .timeline-item::after { content: ''; position: absolute; width: 20px; height: 20px; right: -2px; background-color: var(--branco); border: 4px solid var(--dourado-suave); top: 15px; border-radius: 50%; z-index: 1; }
-    .timeline-item.right::after { left: -2px; }
-    .timeline-content { padding: 20px; background-color: var(--creme-claro); border-radius: 6px; }
-    .timeline-content h3 { margin-bottom: 5px; }
-    #presentes p { max-width: 600px; margin: 0 auto 2rem auto; }
-    .pix-container { margin-top: 2rem; padding: 1.5rem; border: 1px dashed var(--verde-musgo); border-radius: 8px; display: inline-block; }
-    .btn { display: inline-block; background-color: var(--verde-musgo); color: var(--branco); padding: 12px 25px; border-radius: 5px; text-decoration: none; font-weight: 600; transition: background-color 0.3s, transform 0.2s; border: none; cursor: pointer; font-size: 1rem; }
-    .btn:hover { background-color: var(--dourado-suave); transform: scale(1.05); }
-    .mimos-list { list-style: none; padding: 0; margin-top: 1.5rem; max-width: 500px; margin-left: auto; margin-right: auto; text-align: left;}
-    .mimos-list li { margin-bottom: 10px; font-size: 1.1rem; }
-    .mimos-list .fa-solid { color: var(--verde-musgo); margin-right: 10px; }
-    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 2rem; }
-    .gallery-grid img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
-    .gallery-grid img:hover { transform: scale(1.05); }
-    .form-group { margin-bottom: 1.5rem; text-align: left; }
-    .form-group label { display: block; margin-bottom: 8px; font-weight: 600; }
-    .form-group input { width: 100%; padding: 12px; border-radius: 5px; border: 1px solid #ccc; font-family: 'Montserrat', sans-serif; font-size: 1rem; transition: border-color 0.3s, box-shadow 0.3s; }
-    .form-group input:focus { border-color: var(--verde-musgo); box-shadow: 0 0 5px rgba(85, 107, 47, 0.5); outline: none; }
-    form { max-width: 500px; margin: 2rem auto 0 auto; }
-    footer { padding: 2rem; background-color: var(--verde-musgo); color: var(--creme-claro); }
-    .info-container { display: flex; justify-content: space-around; gap: 2rem; margin: 3rem 0; text-align: left; }
-    .info-box { background-color: var(--creme-claro); padding: 1.5rem; border-radius: 8px; border-left: 5px solid var(--verde-musgo); width: 50%; }
-    .info-box h3 { font-size: 1.5rem; margin-bottom: 1rem; }
-    .info-box h3 .fa-solid { margin-right: 10px; color: var(--dourado-suave); }
-    .color-palette { display: flex; justify-content: center; gap: 10px; margin-top: 1rem; }
-    .color-dot { width: 35px; height: 35px; border-radius: 50%; border: 2px solid var(--branco); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-    .message-box { max-width: 650px; margin: 2rem auto 0 auto; padding: 2rem 0; border-top: 2px solid var(--dourado-suave); border-bottom: 2px solid var(--dourado-suave); }
-    .message-box p { font-style: italic; font-size: 1.2rem; line-height: 1.8; }
-
-    @media (max-width: 768px) {
-        #convite h1 { font-size: 3rem; }
-        section h2 { font-size: 2rem; }
-        header nav a { margin: 0 8px; font-size: 0.9rem; }
-        #convite { background-attachment: scroll; }
-        .timeline::after { left: 20px; }
-        .timeline-item { width: 100%; padding-left: 50px; padding-right: 10px; }
-        .timeline-item.left, .timeline-item.right { left: 0; text-align: left; }
-        .timeline-item::after { left: 10px; }
-        .info-container { flex-direction: column; }
-        .info-box { width: 100%; }
-    }
-
-    /* Card que envolve o formulário */
-    .form-card {
-        background-color: var(--branco);
-        padding: 2.5rem;
-        border-radius: 10px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        margin-top: 2rem;
-        text-align: left; /* Alinha o texto do formulário à esquerda */
-    }
-
-    /* Ajustes gerais nos grupos de campos */
-    .form-group {
-        margin-bottom: 1.5rem;
-    }
-    .form-group label {
-        display: block;
-        margin-bottom: 0.5rem;
-        font-weight: 600;
-        color: #555;
-    }
-
-    /* Estilo dos campos de texto, número e área de texto */
-    .form-group input[type="text"],
-    .form-group input[type="number"],
-    .form-group textarea {
-        width: 100%;
-        padding: 12px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-        font-family: 'Montserrat', sans-serif;
-        font-size: 1rem;
-        transition: border-color 0.3s, box-shadow 0.3s;
-    }
-    .form-group input:focus,
-    .form-group textarea:focus {
-        border-color: var(--verde-musgo);
-        box-shadow: 0 0 5px rgba(85, 107, 47, 0.3);
-        outline: none;
-    }
-    .form-group textarea {
-        resize: vertical;
-    }
-
-    /* NOVO VISUAL DOS BOTÕES DE RÁDIO (SIM/NÃO) */
-    .radio-button-group {
-        display: flex;
-        gap: 10px;
-    }
-    .radio-button-group input[type="radio"] {
-        display: none; /* Esconde a bolinha padrão */
-    }
-    .radio-button-group .radio-button {
-        flex-grow: 1;
-        text-align: center;
-        padding: 12px;
-        border: 2px solid #ddd;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-weight: 600;
-    }
-    /* Estilo do botão quando NÃO selecionado */
-    .radio-button-group input[type="radio"] + .radio-button {
-        background-color: #f9f9f9;
-        color: #777;
-    }
-    /* Estilo do botão quando SELECIONADO */
-    .radio-button-group input[type="radio"]:checked + .radio-button {
-        background-color: var(--verde-musgo);
-        border-color: var(--verde-musgo);
-        color: var(--branco);
-        box-shadow: 0 2px 5px rgba(85, 107, 47, 0.4);
-    }
-
-    /* Campos condicionais de Adultos e Crianças */
-    #conditional-fields {
-        transition: all 0.4s ease-in-out;
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
-        margin: 0;
-        padding: 0;
-        border-top: 1px solid #eee;
-    }
-
-    /* Botão principal de confirmação */
-    form .btn {
-        width: 100%;
-        padding: 15px;
-        font-size: 1.1rem;
-        margin-top: 1rem;
-    }
-
-    /* Estilo da mensagem de sucesso */
-    #success-message {
-        padding: 2rem;
-        border: 2px dashed var(--dourado-suave);
-        border-radius: 10px;
-        text-align: center;
-    }
-    #success-message h3 {
-        font-size: 2rem;
-        color: var(--verde-musgo);
-        margin: 1rem 0;
-    }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
@@ -213,6 +25,7 @@
             <a href="#mensagem">Mensagem</a>
         </nav>
     </header>
+    
     <main>
         <section id="convite">
             <div class="convite-texto">
@@ -227,50 +40,148 @@
                 <div class="countdown-item"> <span id="seconds">00</span> <p>Segundos</p> </div>
             </div>
         </section>
+
         <section id="historia" class="fade-in">
             <div class="container">
                 <h2><i class="fa-solid fa-heart"></i>Nossa História</h2>
                 <div class="timeline">
-                    <div class="timeline-item left fade-in"> <div class="timeline-content"> <h3>2021 - Onde tudo começou</h3> <p>Nos conhecemos na academia do bairro ainda usando máscaras e mantendo o distanciamento social. No entanto, entre séries e trocas de olhares, uma conexão especial começou a se formar.</p> </div> </div>
-                    <div class="timeline-item right fade-in"> <div class="timeline-content"> <h3>2022 - O Pedido de Namoro</h3> <p>Em uma noite estrelada, nosso compromisso se tornou oficial.</p> </div> </div>
-                    <div class="timeline-item left fade-in"> <div class="timeline-content"> <h3>2024 - O "Sim" mais esperado</h3> <p>O pedido de casamento! Um momento de pura emoção e felicidade.</p> </div> </div>
-                    <div class="timeline-item right fade-in"> <div class="timeline-content"> <h3>2025 - Rumo ao Altar</h3> <p>E agora, contamos os dias para celebrar nossa união com vocês!</p> </div> </div>
+                    <div class="timeline-item left fade-in"> <div class="timeline-content"> <h3>2021 - Onde tudo começou</h3> <p>Nos conhecemos na academia e logo fizemos um grupo de amigos e começamos a sair.</p> </div> </div>
+                    <div class="timeline-item right fade-in"> <div class="timeline-content"> <h3>2023 - O primeiro beijo</h3> <p>Depois de alguns anos como amigos, finalmente tivemos nosso primeiro beijo "oficial" e sabíamos que era o começo de algo especial.</p> </div> </div>
+                    <div class="timeline-item left fade-in"> <div class="timeline-content"> <h3>2023 - O começo do namoro</h3> <p>E veio ai o pedido de namoro com o apoio da familia e amigos!</p> </div> </div>
+                    <div class="timeline-item right fade-in"> <div class="timeline-content"> <h3>2024 - Um lar para chamar de nosso</h3> <p>Em 2024, realizamos o sonho de morar juntos. Após passarmos por muitos desafios, finalmente podemos começar a construir o nosso lar.</p> </div> </div>
+                    <div class="timeline-item left fade-in"> <div class="timeline-content"> <h3>2025 - O pedido de casamento</h3> <p>Foi em uma viagem romantica onde o tão sonhado pedido veio em um momento especial. Mesmo com a ansiedade, tudo saiu perfeito e estavamos prontos para começar um novo capitulo!</p> </div> </div>
                 </div>
             </div>
         </section>
+
         <section id="cerimonia" class="fade-in">
             <div class="container">
-                <h2><i class="fa-solid fa-ring"></i>Cerimônia e Celebração</h2>
+                <h2><i class="fa-solid fa-ring"></i>Celebração</h2>
                 <p>Celebraremos nossa união no dia <strong>15 de novembro de 2025, às 12h00.</strong></p>
-                <p>A cerimônia e a recepção acontecerão no mesmo local, uma <strong>chácara em São José dos Campos.</strong></p>
-                <p><strong>Endereço:</strong> Av. Canadá, 239 - Jardim Motorama, São José dos Campos - SP, 12220-270</p>
+                <p>A recepção acontecerá em uma <strong>chácara em São José dos Campos.</strong></p>
+                <p><strong>Endereço:</strong> Av. Canadá, 239 - Parque Interlagos, São José dos Campos - SP, 12220-270</p>
                 <div class="info-container">
                     <div class="info-box"> <h3><i class="fa-solid fa-utensils"></i> Nosso Churrasco</h3> <p>Nossa celebração será um churrasco descontraído! Para isso, pedimos a colaboração de cada família com <strong>1kg de carne</strong>. Traga também suas bebidas preferidas em seu <strong>cooler pessoal</strong>.</p> </div>
-                    <div class="info-box"> <h3><i class="fa-solid fa-shirt"></i> Paleta de Cores</h3> <p>Para deixar nossas fotos ainda mais bonitas, sugerimos que os trajes sigam esta paleta de cores. Fique à vontade para escolher seu tom preferido!</p> <p style="font-size: small; color: #808000;">PS.: Nossa casinha também segue essa cartela.</p> <div class="color-palette"> <span class="color-dot" style="background-color: #808000;" title="Verde Oliva"></span> <span class="color-dot" style="background-color: #E2725B;" title="Terracota"></span> <span class="color-dot" style="background-color: #D2B48C;" title="Nude/Bege"></span> <span class="color-dot" style="background-color: #E0BFB8;" title="Rosê"></span> <span class="color-dot" style="background-color: #FFDB58;" title="Mostarda"></span> </div> </div>
+                    <div class="info-box"> <h3><i class="fa-solid fa-shirt"></i> Paleta de Cores</h3> <p>Para deixar nossas fotos ainda mais bonitas, sugerimos que os trajes sigam esta paleta de cores. Fique à vontade para escolher seu tom preferido!</p> <p style="font-size: small; color: #808000;">PS.: Nossa casinha também segue essa cartela.</p> <div class="color-palette"> <span class="color-dot" style="background-color: #404a37;" title="Verde Oliva"></span> <span class="color-dot" style="background-color: #57614f;" title="Musgo"></span> <span class="color-dot" style="background-color: #b3b792;" title="Pistache"></span> <span class="color-dot" style="background-color: #e5d2b8;" title="Vanilla"></span> <span class="color-dot" style="background-color: #e5e0d8;" title="Almond"></span> </div> </div>
                 </div>
                 <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3668.601992985338!2d-45.83688888502987!3d-23.18433298489117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cc4b39b7d4a275%3A0x7d2f9d3b0b522a36!2sAv.%20Canad%C3%A1%2C%20239%20-%20Jardim%20Motorama%2C%20S%C3%A3o%20Jos%C3%A9%20dos%20Campos%20-%20SP%2C%2012220-270!5e0!3m2!1spt-BR!2sbr!4v1678886400000!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3667.681128198642!2d-45.8368887!3d-23.1814364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cc4b1f1d1f1d1d%3A0x1d1f1d1f1d1f1d1d!2sAv.%20Canad%C3%A1%2C%20239%20-%20Jardim%20Motorama%2C%20S%C3%A3o%20Jos%C3%A9%20dos%20Campos%20-%20SP%2C%2012220-270%2C%20Brasil!5e0!3m2!1spt-BR!2sbr!4v1678886400000!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </section>
+
         <section id="presentes" class="fade-in">
-            <div class="container">
-                <h2><i class="fa-solid fa-gift"></i>Presentes</h2>
-                <p>Sua presença é nosso maior presente! Mas, se desejar nos mimar, ficaremos muito felizes com o seu <strong>apoio.</strong></p>
-                <p>Fique à vontade para contribuir com um valor para o nosso casamento, um mimo para o nosso lar ou algo que você ache que vai nos fazer <br> <strong>felizes para sempre!</strong></p>
-                <div class="pix-container">
-                    <p><strong>Chave PIX (Celular):</strong></p>
-                    <p id="pix-key" style="font-weight: bold; font-size: 1.2rem;">12-99610-3342</p>
-                    <button class="btn" id="copy-btn">Copiar Chave PIX</button>
+    <div class="container">
+        <h2><i class="fa-solid fa-gift"></i>Lista de Presentes</h2>
+        <p>Sua presença é nosso maior presente! Mas, se desejar nos mimar, criamos cotas para a lua de mel e algumas "necessidades" especiais para a vida a dois. O valor é simbólico e será convertido em ajuda para nossa nova vida.</p>
+        
+        <div class="pagination">
+            <button class="btn page-btn active" data-page="page1">Casa e Lua de Mel</button>
+            <button class="btn page-btn" data-page="page2">Operação Salva-Casamento</button>
+        </div>
+
+        <div id="page1" class="gift-page active">
+            <h3 class="category-title">Para Nossa Casa e Lua de Mel 🏡✈️</h3>
+            <div class="gift-gallery">
+                <div class="gift-card" data-title="Jantar Romântico na Lua de Mel" data-price="R$ 300,00" data-img="presentes/jantar.jpg">
+                    <img src="presentes/jantar.jpg" alt="Jantar Romântico">
+                    <div class="gift-info"><h3>Jantar Romântico na Lua de Mel</h3><p>R$ 300,00</p><button class="btn btn-presentear">Presentear</button></div>
                 </div>
-                <h3 style="margin-top: 3rem; font-size: 1.8rem;">Sugestões para Nosso Cantinho</h3>
-                <ul class="mimos-list">
-                    <li><i class="fa-solid fa-utensils"></i>Itens para deixar nossa cozinha mais gostosa.</li>
-                    <li><i class="fa-solid fa-mug-saucer"></i>Um cantinho do café bem aconchegante.</li>
-                    <li><i class="fa-solid fa-bed"></i>Roupas de cama e banho para nosso conforto.</li>
-                </ul>
+                <div class="gift-card" data-title="Passeio de Barco" data-price="R$ 450,00" data-img="presentes/barco.jpg">
+                    <img src="presentes/barco.jpg" alt="Passeio de Barco">
+                    <div class="gift-info"><h3>Passeio de Barco</h3><p>R$ 450,00</p><button class="btn btn-presentear">Presentear</button></div>
+                </div>
+                <div class="gift-card" data-title="Kit de Panelas (Para não queimar o arroz)" data-price="R$ 350,00" data-img="presentes/panela.jpg">
+                    <img src="presentes/panela.jpg" alt="Kit de Panelas">
+                    <div class="gift-info"><h3>Kit de Panelas (Para não queimar o arroz)</h3><p>R$ 350,00</p><button class="btn btn-presentear">Presentear</button></div>
+                </div>
+                <div class="gift-card" data-title="Diária Extra no Paraíso" data-price="R$ 500,00" data-img="presentes/hotel.jpg">
+                    <img src="presentes/hotel.jpg" alt="Diária Extra">
+                    <div class="gift-info"><h3>Diária Extra no Paraíso</h3><p>R$ 500,00</p><button class="btn btn-presentear">Presentear</button></div>
+                </div>
             </div>
-        </section>
+        </div>
+
+        <div id="page2" class="gift-page">
+            <h3 class="category-title">Operação Salva-Casamento e Afins 😂</h3>
+            <div class="gift-gallery">
+                <div class="gift-card" data-title="Cota 'Pizza do pedido de desculpas'" data-price="R$ 60,00" data-img="presentes/pizza.jpg">
+                    <img src="presentes/pizza.jpg" alt="Pizza">
+                    <div class="gift-info"><h3>Cota "Pizza do pedido de desculpas"</h3><p>R$ 60,00</p><button class="btn btn-presentear">Presentear</button></div>
+                </div>
+                <div class="gift-card" data-title="1 Mês de Ração pro nosso futuro Pet" data-price="R$ 150,00" data-img="presentes/racao-pet.jpg">
+                    <img src="presentes/racao-pet.jpg" alt="Pet">
+                    <div class="gift-info"><h3>1 Mês de Ração pro nossos Pets</h3><p>R$ 150,00</p><button class="btn btn-presentear">Presentear</button></div>
+                </div>
+                <div class="gift-card" data-title="Cota 'Paciência para o noivo na TPM'" data-price="R$ 30,00" data-img="presentes/paciencia.jpg">
+                    <img src="presentes/paciencia.jpg" alt="Paciência">
+                    <div class="gift-info"><h3>Cota "Paciência para o noivo na TPM"</h3><p>R$ 30,00</p><button class="btn btn-presentear">Presentear</button></div>
+                </div>
+                <div class="gift-card" data-title="O primeiro 'vale night' dos noivos" data-price="R$ 100,00" data-img="presentes/vale-night.jpg">
+                    <img src="presentes/balada.jpg" alt="Balada">
+                    <div class="gift-info"><h3>O primeiro "vale night" dos noivos</h3><p>R$ 100,00</p><button class="btn btn-presentear">Presentear</button></div>
+                </div>
+                <div class="gift-card" data-title="Cota 'Ajuda pra noiva não matar o noivo'" data-price="R$ 25,00" data-img="presentes/nao-matar.jpg">
+                    <img src="presentes/naomatar.jpg" alt="Não matar o noivo">
+                    <div class="gift-info"><h3>Cota "Ajuda pra noiva não matar o noivo"</h3><p>R$ 25,00</p><button class="btn btn-presentear">Presentear</button></div>
+                </div>
+                <div class="gift-card" data-title="Vale-Terapia de Casal (uso preventivo)" data-price="R$ 180,00" data-img="presentes/terapia.jpg">
+                    <img src="presentes/terapia.jpg" alt="Terapia">
+                    <div class="gift-info"><h3>Vale-Terapia de Casal (uso preventivo)</h3><p>R$ 180,00</p><button class="btn btn-presentear">Presentear</button></div>
+                </div>
+                <div class="gift-card" data-title="Cota 'Gás da Cozinha' (pra ninguém cozinhar)" data-price="R$ 120,00" data-img="presentes/gas.jpg">
+                    <img src="presentes/gas.jpg" alt="Gás">
+                    <div class="gift-info"><h3>Cota "Gás da Cozinha" (pra ninguém cozinhar)</h3><p>R$ 120,00</p><button class="btn btn-presentear">Presentear</button></div>
+                </div>
+                <div class="gift-card" data-title="Netflix pra maratonar em vez de discutir" data-price="R$ 55,90" data-img="presentes/netflix.jpg">
+                    <img src="presentes/netflix.jpg" alt="Netflix">
+                    <div class="gift-info"><h3>Netflix pra maratonar em vez de discutir</h3><p>R$ 55,90</p><button class="btn btn-presentear">Presentear</button></div>
+                </div>
+                <div class="gift-card" data-title="O primeiro engradado da casa nova" data-price="R$ 70,00" data-img="presentes/cerveja.jpg">
+                    <img src="presentes/cerveja.jpg" alt="Cerveja">
+                    <div class="gift-info"><h3>O primeiro engradado da casa nova</h3><p>R$ 70,00</p><button class="btn btn-presentear">Presentear</button></div>
+                </div>
+                <div class="gift-card" data-title="Multa por toalha molhada na cama" data-price="R$ 20,00" data-img="img/toalha.jpg">
+                <img src="presentes/toalha.jpg" alt="Toalha molhada">
+                <div class="gift-info"><h3>Multa por toalha molhada na cama</h3><p>R$ 20,00</p><button class="btn btn-presentear">Presentear</button></div>
+            </div>
+                 </div>
+        </div>
+    </div>
+</section>
+
+<div id="gift-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+        <button id="close-modal" class="close-button">&times;</button>
+        <img id="modal-img" src="" alt="Imagem do Presente">
+        <h2 id="modal-title"></h2>
+        <p id="modal-price"></p>
+        <hr>
+        <p>Para nos presentear, faça um PIX e depois preencha o formulário abaixo para nos avisar. Agradecemos de coração!</p>
+        
+        <div class="pix-container">
+            <p><strong>Chave PIX (Celular):</strong></p>
+            <p id="modal-pix-key" style="font-weight: bold; font-size: 1.2rem;">12-99610-3342</p>
+            <button class="btn" id="modal-copy-btn">Copiar Chave</button>
+        </div>
+
+        <form id="gift-confirmation-form">
+            <input type="hidden" id="gift-name-input" name="entry.770314683" value="">
+            
+            <div class="form-group">
+                <label for="guest-name">Seu nome completo:</label>
+                <input type="text" id="guest-name" name="entry.267673279" required>
+            </div>
+            <div class="form-group">
+                <label for="guest-message">Deixe um recado para nós (opcional):</label>
+                <textarea id="guest-message" name="entry.974424391" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn">Já fiz o PIX, confirmar presente!</button>
+        </form>
+        <p id="gift-success-msg" style="display:none; color: var(--verde-musgo); font-weight: bold; margin-top: 1rem;">Obrigado pelo carinho! ♥</p>
+    </div>
+</div>
+
         <section id="galeria" class="fade-in">
             <div class="container">
                 <h2><i class="fa-solid fa-camera-retro"></i>Nossos Momentos</h2>
@@ -285,7 +196,7 @@
         <section id="festa" class="fade-in">
             <div class="container">
                 <h2><i class="fa-solid fa-check-double"></i>Confirmar Presença</h2>
-                <p>Por favor, confirme sua presença até o dia <strong>15 de Outubro de 2025.</strong></p>
+                <p>Por favor, confirme sua presença até o dia <strong>30 de Outubro de 2025.</strong></p>
                 
                 <div id="success-message" style="display: none;">
                     <img src="alianca.png" alt="Enviado" style="max-width: 120px;">
@@ -299,18 +210,15 @@
                             <label for="nome">Seu nome completo:</label>
                             <input type="text" id="nome" name="entry.236437215" required>
                         </div>
-
                         <div class="form-group">
                             <label>Você irá ao evento?</label>
                             <div class="radio-button-group">
                                 <input type="radio" id="radio-sim" name="entry.1209342466" value="Sim, estarei presente" required>
                                 <label for="radio-sim" class="radio-button">Sim, estarei presente</label>
-
                                 <input type="radio" id="radio-nao" name="entry.1209342466" value="Não poderei comparecer">
                                 <label for="radio-nao" class="radio-button">Não poderei comparecer</label>
                             </div>
                         </div>
-
                         <div id="conditional-fields">
                             <div class="form-group">
                                 <label for="adultos">Quantidade de adultos (incluindo você):</label>
@@ -321,12 +229,10 @@
                                 <input type="number" id="criancas" name="entry.922480604" min="0" value="0">
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label for="recado">Deixe um recado para os noivos (opcional):</label>
                             <textarea id="recado" name="entry.1426054380" rows="4"></textarea>
                         </div>
-
                         <button type="submit" class="btn">Confirmar Presença</button>
                     </form>
                 </div>
@@ -337,103 +243,16 @@
             <div class="container">
                 <h2><i class="fa-solid fa-pen-fancy"></i>Uma Mensagem Para Vocês</h2>
                 <div class="message-box">
-                    <p>Será uma reunião mais íntima com os familiares e amigos mais próximos. Cada um de vocês teve um papel importante para a nossa história e gostaríamos que estivessem presente nesse novo capítulo que se inicia. Contamos com as suas orações e testemunhos.</p>
+                    <p>Será uma reunião mais íntima com os familiares e amigos mais próximos. Cada um de vocês teve um papel importante para a nossa história e gostaríamos que estivessem presentes nesse novo capítulo que se inicia. Contamos com as suas orações!</p>
                 </div>
             </div>
         </section>
     </main>
     
     <footer>
-        <p>Ana Luiza & Vitor ♡ 2025</p>
+        <p>Ana Luiza & Vitor Viana ♡ 2025</p>
     </footer>
 
-    <script>
-        const faders = document.querySelectorAll('.fade-in');
-        const appearOptions = { threshold: 0.2 };
-        const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            });
-        }, appearOptions);
-        faders.forEach(fader => appearOnScroll.observe(fader));
-        
-        const copyBtn = document.getElementById('copy-btn');
-        const pixKey = document.getElementById('pix-key').innerText;
-        copyBtn.addEventListener('click', () => {
-            navigator.clipboard.writeText(pixKey).then(() => {
-                copyBtn.innerText = 'Copiado!';
-                setTimeout(() => { copyBtn.innerText = 'Copiar Chave PIX'; }, 2000);
-            }).catch(err => { alert('Erro ao copiar a chave.'); });
-        });
-
-        const countdown = () => {
-            const weddingDate = new Date('November 15, 2025 12:00:00').getTime();
-            const now = new Date().getTime();
-            const gap = weddingDate - now;
-            const second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24;
-            const textDay = Math.floor(gap / day), textHour = Math.floor((gap % day) / hour), textMinute = Math.floor((gap % hour) / minute), textSecond = Math.floor((gap % minute) / second);
-            if (gap < 0) {
-                document.getElementById('countdown').innerHTML = "<h3 style='color:white; font-family: Cormorant Garamond, serif;'>É hoje o grande dia!</h3>";
-                return;
-            }
-            document.getElementById('days').innerText = String(textDay).padStart(2, '0');
-            document.getElementById('hours').innerText = String(textHour).padStart(2, '0');
-            document.getElementById('minutes').innerText = String(textMinute).padStart(2, '0');
-            document.getElementById('seconds').innerText = String(textSecond).padStart(2, '0');
-        };
-        setInterval(countdown, 1000);
-
-        const rsvpForm = document.getElementById('rsvp-form');
-        const successMessage = document.getElementById('success-message');
-        const conditionalFields = document.getElementById('conditional-fields');
-        // ✅ CORREÇÃO FEITA AQUI 👇
-        const presenceRadios = document.querySelectorAll('input[name="entry.1209342466"]');
-
-        // 1. Lógica para mostrar/esconder campos
-        presenceRadios.forEach(radio => {
-            radio.addEventListener('change', () => {
-                if (radio.value === 'Sim, estarei presente') {
-                    conditionalFields.style.maxHeight = '300px'; // Altura suficiente para os campos
-                    conditionalFields.style.opacity = '1';
-                    conditionalFields.style.marginTop = '1.5rem';
-                } else {
-                    conditionalFields.style.maxHeight = '0';
-                    conditionalFields.style.opacity = '0';
-                    conditionalFields.style.marginTop = '0';
-                }
-            });
-        });
-
-        // 2. Lógica de envio do formulário
-        rsvpForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const submitButton = rsvpForm.querySelector('button');
-            submitButton.innerText = 'Enviando...';
-            submitButton.disabled = true;
-            
-            const formData = new FormData(rsvpForm);
-            const url = 'https://docs.google.com/forms/d/e/1FAIpQLSflHvy5-y-iuIWIl0JdOQPKo0KhgtGuA54Q_nPGTJsaMO6MXA/formResponse';
-
-            fetch(url, {
-                method: 'POST',
-                body: formData,
-                mode: 'no-cors' // Essencial para o envio funcionar
-            })
-            .then(() => {
-                // Esconde o formulário e mostra a mensagem de sucesso
-                rsvpForm.style.display = 'none';
-                successMessage.style.display = 'block';
-            })
-            .catch(error => {
-                console.error('Erro ao enviar:', error.message);
-                alert('Ocorreu um erro ao confirmar. Tente novamente, por favor.');
-                submitButton.innerText = 'Confirmar Presença';
-                submitButton.disabled = false;
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
